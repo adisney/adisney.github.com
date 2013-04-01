@@ -1,0 +1,47 @@
+<head>
+  <script rel="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <style>
+    body {
+      background-color: black;
+    }
+    h1 {
+      color: red;
+      text-align: center;
+      font-size: 5em;
+    }
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto 
+    }
+  </style>
+
+  <script>
+    window.setInterval(function() {
+      var millisUntil = new Date() - new Date("2012/05/19 00:00");
+      var differenceDate = new Date(millisUntil);
+      var seconds = 60 - differenceDate.getSeconds() + "";
+      var minutes = 60 - differenceDate.getMinutes() + "";
+      var hours = 24 - differenceDate.getHours() + "";
+      var days = 365 - parseInt(millisUntil/1000/60/60/24) + "";
+      $(".timer").text(formatTime(days) + ":" + formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds));
+    }, 1000);
+
+    var formatTime = function(timePiece) {
+      if (timePiece.length < 2) {
+        return "0" + timePiece;
+      } else {
+        return timePiece;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div>
+  <h1 class="lobster">
+    Lobster Day: Day of Lobster 2013
+  </h1>
+  <h1 class="timer">
+  </h1>
+  <img src="http://25.media.tumblr.com/tumblr_m5nxnf5pbO1qzalq2o1_500.gif"></img>
+</body>
