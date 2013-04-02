@@ -2,7 +2,7 @@
   <script rel="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <style>
     body {
-      background-color: black;
+      background-color: #404040;
     }
     h1 {
       color: red;
@@ -17,15 +17,6 @@
   </style>
 
   <script>
-    window.setInterval(function() {
-      var millisUntil = new Date() - new Date("2012/05/19 00:00");
-      var differenceDate = new Date(millisUntil);
-      var seconds = 60 - differenceDate.getSeconds() + "";
-      var minutes = 60 - differenceDate.getMinutes() + "";
-      var hours = 24 - differenceDate.getHours() + "";
-      var days = 365 - parseInt(millisUntil/1000/60/60/24) + "";
-      $(".timer").text(formatTime(days) + ":" + formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds));
-    }, 1000);
 
     var formatTime = function(timePiece) {
       if (timePiece.length < 2) {
@@ -34,14 +25,23 @@
         return timePiece;
       }
     }
+
+    var go = function() {
+      var millisUntil = new Date("2012/05/19 00:00:00 CST") - new Date();
+      var differenceDate = new Date(millisUntil);
+      var seconds = differenceDate.getSeconds() + "";
+      var minutes = differenceDate.getMinutes() + "";
+      var hours = 23 - new Date().getHours() + "";
+      var days = 365 + parseInt(millisUntil/1000/60/60/24) + "";
+      $(".timer").text(formatTime(days) + ":" + formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds));
+    }
+
+    window.setInterval(go, 1000);
   </script>
 </head>
 <body>
   <div>
-  <h1 class="lobster">
-    Lobster Day: Day of Lobster 2013
-  </h1>
   <h1 class="timer">
   </h1>
-  <img src="http://25.media.tumblr.com/tumblr_m5nxnf5pbO1qzalq2o1_500.gif"></img>
+  <img src="lobster.png"></img>
 </body>
